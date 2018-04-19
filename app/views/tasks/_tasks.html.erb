@@ -1,0 +1,20 @@
+<% @tasks.each do |task| %>
+  <table class="table table-hover table-striped table-condensed">
+    <tr>
+      <th>ID</th>
+      <th>ユーザ名</th>
+      <th>ユーザID</th>
+      <th>タスク内容</th>
+      <th>ステータス</th>
+    </tr>
+    <tr>
+      <th><%= link_to task.id, task %></th>
+      <th><%= link_to task.user.name, user_path(task.user) %></th>
+      <th>ID:<%= task.user_id%></th>
+      <th><%= task.content %></th>
+      <th><%= task.status %></th>
+    </tr>
+  </table>
+<% end %>
+
+<%= link_to "新規タスクの登録", new_task_path, class: "btn btn-primary" %>
