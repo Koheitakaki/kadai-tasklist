@@ -1,20 +1,23 @@
 <h1>タスク一覧</h1>
 
-<table class="table table-hover table-striped table-condensed">
-  <% @tasks.each do |task| %>
-  <tr>
-    <th>ID</th>
-    <th class>タスク内容</th>
-    <th class>ステータス</th>
-  </tr>
-  <tr class>
-    <td><%= link_to task.id, task %></td>    
-    <td><%= task.content %></td>
-    <td><%= task.status %></td>
-  </tr>
-  <% end %>
-</table>
-
+  <table class="table table-hover table-striped table-condensed">
+    <tr>
+      <th>ID</th>
+      <th>ユーザ名</th>
+      <th>ユーザID</th>
+      <th>タスク内容</th>
+      <th>ステータス</th>
+    </tr>
+    <% @tasks.each do |task| %>
+    <tr>
+      <th><%= link_to task.id, task %></th>
+      <th><%= link_to task.user.name, user_path(task.user) %></th>
+      <th>ID:<%= task.user_id%></th>
+      <th><%= task.content %></th>
+      <th><%= task.status %></th>
+    </tr>
+    <% end %>
+  </table>
 
 <%= link_to "新規タスクの登録", new_task_path, class: "btn btn-primary" %>
 
